@@ -8,31 +8,30 @@
   <title>Document</title>
 </head>
 <body>
-<!--<script src="./promise.js"></script>-->
+<script src="./promiseTest.js"></script>
 <script>
-  const p = new Promise((resolve, reject) => {
+  const p = new Promise((resolve,reject) => {
     setTimeout(() => {
+      resolve(1)
       reject(1)
-    }, 1000)
-    //throw 4
+    },1000)
   })
   p.then(
     value => {
-      console.log('onResolved()', value)
+      console.log('onResolved()',value)
     },
-    reason => {
-      console.log('onRejected()', reason)
-    })
+    reason=>{
+      console.log('onRejected()',reason)
+    }
+  )
   p.then(
     value => {
-      console.log('onResolved()2', value)
+      console.log('onResolved1()',value)
     },
-    reason => {
-      console.log('onRejected()', reason)
-      return 1
-    }).then(value => {
-    console.log(value)
-  })
+    reason=>{
+      console.log('onRejected()1',reason)
+    }
+  )
 </script>
 </body>
 </html>
