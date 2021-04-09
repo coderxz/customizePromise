@@ -8,29 +8,28 @@
   <title>Document</title>
 </head>
 <body>
-<!--<script src="./promise.js"></script>-->
+<script src="./promiseTest.js"></script>
 <script>
-  const p = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject(1)
-    }, 1000)
-    //throw 4
+  new Promise((resolve, reject) => {
+    resolve(1)
   })
-  p.then(
-    value => {
-      console.log('onResolved()', value)
-    },
-    reason => {
-      console.log('onRejected()', reason)
-    })
-  p.then(
-    value => {
-      console.log('onResolved()2', value)
-    },
-    reason => {
-      console.log('onRejected()', reason)
-      return 1
-    }).then(value => {
+    .then(
+      value => {
+        console.log('onResolved()', value)
+        return 2
+      },
+      reason => {
+        console.log('onRejected()', reason)
+      })
+    .then(
+      value => {
+        console.log('onResolved()2', value)
+        throw 2
+      },
+      reason => {
+        console.log('onRejected()', reason)
+        return 1
+      }).then(value => {
     console.log(value)
   })
 </script>
